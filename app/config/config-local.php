@@ -4,9 +4,9 @@ return [
         'adapter'     => 'Mysql',
         'host'        => 'localhost',
         'username'    => 'root',
-        'password'    => '123456',
+        'password'    => 'root',
         'tablePrefix' => 'pha_',
-        'dbname'      => 'test',
+        'dbname'      => 'phalcon',
         'charset'     => 'utf8',
         'options' => [
             \PDO::ATTR_STRINGIFY_FETCHES => false,

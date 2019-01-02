@@ -50,7 +50,7 @@ class UserService
             if($model->loadAndSave($data)){
                 return ["code"=>SUCCESS_CODE,"msg"=>TIPS_SAVE_OK,"data"=>$model];
             }else{
-                throw new \Exception(array_shift($model->getMessages()));
+                throw new \Exception($model->getFirstMessage());
             }
         }catch (\Exception $e){
             return ["code"=>FAIL_CODE,"msg"=>$e->getMessage()];
@@ -78,7 +78,7 @@ class UserService
             if($model->validation() && $model->save()){
                 return ["code"=>SUCCESS_CODE,"msg"=>TIPS_DELETE_OK,"data"=>$model];
             }else{
-                throw new \Exception(array_shift($model->getMessages()));
+                throw new \Exception($model->getFirstMessage());
             }
         }catch (\Exception $e){
             return ["code"=>FAIL_CODE,"msg"=>$e->getMessage()];

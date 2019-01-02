@@ -103,10 +103,7 @@ $di->set('dispatcher', function () {
 //队列
 $di->setShared('queue',function ()use ($di){
     $config = $this->getConfig();
-    $service = new QueueService();
-    $service->queue = new Phalcon\Queue\Beanstalk($config->beanstalk->toArray());
-    $service->di = $di;
-    return $service;
+    return new Phalcon\Queue\Beanstalk($config->beanstalk->toArray());
 });
 
 $di->setShared('dbmap',function (){

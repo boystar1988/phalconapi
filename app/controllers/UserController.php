@@ -66,11 +66,7 @@ class UserController extends ControllerBase
     public function searchAction()
     {
         $res = $this->user->search();
-        if($res['code'] == SUCCESS_CODE){
-            return $this->success($res);
-        }else{
-            return $this->error(API_FAIL_CODE,$res['msg']??"删除失败");
-        }
+        return $this->success($res);
     }
 
 }

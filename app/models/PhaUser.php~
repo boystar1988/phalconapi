@@ -1,37 +1,51 @@
 <?php
 
-class PhaUser extends BaseModel
+class PhaUser extends \Phalcon\Mvc\Model
 {
 
     /**
-     * 
+     *
      * @var integer
      * @Primary
      * @Identity
      * @Column(type="integer", length=11, nullable=false)
      */
-    public $uid;
+    public $id;
 
     /**
-     * 
+     *
      * @var string
-     * @Column(type="string", length=255, nullable=false)
+     * @Column(type="string", length=16, nullable=false)
      */
-    public $username='';
+    public $username;
 
     /**
-     * 
+     *
      * @var string
      * @Column(type="string", length=32, nullable=false)
      */
-    public $password='';
+    public $password;
 
     /**
-     * 
+     *
      * @var integer
-     * @Column(type="integer", length=3, nullable=false)
+     * @Column(type="integer", length=1, nullable=false)
      */
-    public $status='0';
+    public $is_del;
+
+    /**
+     *
+     * @var integer
+     * @Column(type="integer", length=10, nullable=false)
+     */
+    public $create_time;
+
+    /**
+     *
+     * @var integer
+     * @Column(type="integer", length=10, nullable=false)
+     */
+    public $update_time;
 
     /**
      * Returns table name mapped in the model.
@@ -41,19 +55,6 @@ class PhaUser extends BaseModel
     public function getSource()
     {
         return 'pha_user';
-    }
-
-    /**
-     * 获取字段名称
-     * @param $attribute
-     * @return mixed
-     */
-    public function labelName($attribute)
-    {
-        $labelsMap = [
-            'status'=>'状态',
-        ];
-        return $labelsMap[$attribute]??$attribute;
     }
 
 }

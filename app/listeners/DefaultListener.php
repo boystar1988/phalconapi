@@ -1,6 +1,6 @@
 <?php
 
-class DefaultListener
+class DefaultListener implements ListenerInterface
 {
 
     public function run($data)

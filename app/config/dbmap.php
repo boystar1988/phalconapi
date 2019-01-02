@@ -3,32 +3,29 @@
  * 数据库字段校验规则
  * (系统自动生成)
  * @author zhaozhuobin
- * @date 2018-12-27 12:01
+ * @date 2019-01-02 13:07
  */
 return [
     "pha_user"  =>  [
         "uid"  =>  [
         ],
         "username"  =>  [
-            "length"  =>  255,
+            "length"  =>  16,
         ],
         "password"  =>  [
             "length"  =>  32,
         ],
-        "status"  =>  [
+        "is_del"  =>  [
             "min"  =>  0,
-            "max"  =>  999,
+            "max"  =>  9,
         ],
-    ],
-    "pha_user_profile"  =>  [
-        "id"  =>  [
-        ],
-        "nickname"  =>  [
-            "length"  =>  255,
-        ],
-        "uid"  =>  [
+        "create_time"  =>  [
             "min"  =>  0,
-            "max"  =>  99999999999,
+            "max"  =>  9999999999,
+        ],
+        "update_time"  =>  [
+            "min"  =>  0,
+            "max"  =>  9999999999,
         ],
     ],
 ];

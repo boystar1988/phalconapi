@@ -5,22 +5,27 @@ use Phalcon\CLI\Console as ConsoleApp;
 $di = new CliDI();
 defined('APPLICATION_PATH')|| define('APPLICATION_PATH', realpath(dirname(__FILE__)));
 $loader = new \Phalcon\Loader();
-$loader->registerDirs(array(APPLICATION_PATH . '/listeners',APPLICATION_PATH . '/tasks'));
+$loader->registerDirs([
+    APPLICATION_PATH . '/listeners',
+    APPLICATION_PATH . '/tasks'
+]);
 $loader->register();
 
 if(is_readable(APPLICATION_PATH . '/config/config.php')) {
     $config = include APPLICATION_PATH . '/config/config.php';
+    //配置
     $di->set('config', $config);
-    /**
-     * Database connection is created based in the parameters defined in the configuration file
-     */
+    //数据库
     $di->set('db', function () {
         $config = $this->getConfig();
-
         $class = 'Phalcon\Db\Adapter\Pdo\\' . $config->database->adapter;
         $connection = new $class($config->database->toArray());
-
         return $connection;
+    });
+    //队列
+    $di->setShared('queue',function (){
+        $config = $this->getConfig();
+        return new Phalcon\Queue\Beanstalk($config->beanstalk->toArray());
     });
 }
 $console = new ConsoleApp();

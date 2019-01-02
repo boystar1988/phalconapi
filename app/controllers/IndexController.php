@@ -14,8 +14,8 @@ class IndexController extends ControllerBase
      */
     public function jobAction()
     {
-        $res = $this->queue->push(['listener' => 'Default','data'=>['a'=>1]]);
-        return $this->success($res);
+        $res = $this->queue->put(['listener' => 'default','data'=>['a'=>1]]);
+        return $this->success(intval($res));
     }
 
 }

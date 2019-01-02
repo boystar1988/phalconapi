@@ -5,9 +5,9 @@ class BaseModel extends \Phalcon\Mvc\Model
     const IS_DEL_FALSE = 0;
     const IS_DEL_TRUE = 1;
 
-    public function labelName($attribute)
+    public function columnMap()
     {
-        return $attribute;
+        return [];
     }
 
     /**
@@ -22,7 +22,6 @@ class BaseModel extends \Phalcon\Mvc\Model
      * Between	    检测值是否位于两个值之间
      * Confirmation	检测两个值是否相等
      * @return bool
-     * @throws Exception
      */
     public function validation()
     {
@@ -38,9 +37,9 @@ class BaseModel extends \Phalcon\Mvc\Model
      * @param \Phalcon\ValidationInterface $validator
      * @return bool
      */
-    public function validate(\Phalcon\ValidationInterface $validator)
+    public function validate($validator)
     {
-        $ruleMap = $this->getDI()->get('dbmap');
+        $ruleMap = include APP_PATH . "/config/dbmap.php";;
         $rule = $ruleMap[$this->getSource()]??[];
         foreach ($rule as $k=>$v){
             if(isset($v['min']) || isset($v['max'])){
@@ -50,21 +49,21 @@ class BaseModel extends \Phalcon\Mvc\Model
                 if(isset($v['min'])){
                     $filter['minimum'] = $v['min'];
                 }
-                $filter['message'] = $this->labelName($k).'的值必须在'.$v['min'].'~'.$v['max'].'之间';
+                $filter['message'] = $this->columnMap()[$k].'的值必须在'.$v['min'].'~'.$v['max'].'之间';
                 $validator->add($k,new \Phalcon\Validation\Validator\Between($filter));
             }
             if(isset($v['length'])){
                 $validator->add($k,new \Phalcon\Validation\Validator\StringLength([
                     "max" => $v['length'],
                     "min" => 0,
-                    "messageMaximum" => $this->labelName($k)."长度不能超过".$v['length'],
-                    "messageMinimum" => $this->labelName($k)."长度不能少于".$v['length'],
+                    "messageMaximum" => $this->columnMap()[$k]."长度不能超过".$v['length'],
+                    "messageMinimum" => $this->columnMap()[$k]."长度不能少于".$v['length'],
                 ]));
             }
             if(isset($v['in'])){
                 $validator->add($k,new \Phalcon\Validation\Validator\InclusionIn([
                     'domain'=>$v['in'],
-                    'message'=>$this->labelName($k).'格式不正确，取值范围：('.implode(',',$v['in']).')',
+                    'message'=>$this->columnMap()[$k].'格式不正确，取值范围：('.implode(',',$v['in']).')',
                 ]));
             }
         }
@@ -78,8 +77,7 @@ class BaseModel extends \Phalcon\Mvc\Model
      */
     public function load(array $attribute)
     {
-        $ruleMap = $this->getDI()->get('dbmap');
-        $rule = $ruleMap[$this->getSource()]??[];
+        $rule = $this->columnMap();
         foreach ($attribute as $k=>$v){
             if(array_key_exists($k,$rule)){
                 $this->$k = $v;
