@@ -100,6 +100,15 @@ $di->set('dispatcher', function () {
     return $dispatcher;
 });
 
+//队列
+$di->setShared('queue',function ()use ($di){
+    $config = $this->getConfig();
+    $service = new QueueService();
+    $service->queue = new Phalcon\Queue\Beanstalk($config->beanstalk->toArray());
+    $service->di = $di;
+    return $service;
+});
+
 $di->setShared('dbmap',function (){
     return include APP_PATH . "/config/dbmap.php";
 });

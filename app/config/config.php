@@ -13,6 +13,7 @@ return new \Phalcon\Config(array_merge([
     'application' => [
         'appDir'         => APP_PATH . '/',
         'helpersDir'     => APP_PATH . '/helpers/',
+        'listenersDir'   => APP_PATH . '/listeners/',
         'controllersDir' => APP_PATH . '/controllers/',
         'modelsDir'      => APP_PATH . '/models/',
         'servicesDir'    => APP_PATH . '/services/',
