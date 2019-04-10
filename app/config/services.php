@@ -87,9 +87,15 @@ $di->setShared('session', function () {
 });
 
 $di->set('router',function (){
+    $config = $this->getConfig();
     $router = new Phalcon\Mvc\Router();
     $router->setUriSource(Router::URI_SOURCE_SERVER_REQUEST_URI);
-//    $router->add('/index/test',     ['controller' => 'index', 'action' => 'test']);
+//    $router->removeExtraSlashes(true);//处理结尾额外的斜杆
+//    $router->notFound(["controller"=>'index','action'=>'error']);
+    $routeRule = $config->route->toArray();
+    foreach ($routeRule as $k=>$v){
+        $router->add($v['path']??'',$v['action']??null , $v['method']??null )->setName($k);
+    }
     return $router;
 });
 
@@ -103,7 +109,10 @@ $di->set('dispatcher', function () {
 //队列
 $di->setShared('queue',function ()use ($di){
     $config = $this->getConfig();
-    return new Phalcon\Queue\Beanstalk($config->beanstalk->toArray());
+    $beanstalk = new Phalcon\Queue\Beanstalk(['host'=>$config->beanstalk->host,'port'=>$config->beanstalk->port]);
+    $beanstalk->connect();
+    $beanstalk->choose($config->beanstalk->tube);
+    return $beanstalk;
 });
 
 $di->setShared('dbmap',function (){

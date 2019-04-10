@@ -25,7 +25,10 @@ if(is_readable(APPLICATION_PATH . '/config/config.php')) {
     //队列
     $di->setShared('queue',function (){
         $config = $this->getConfig();
-        return new Phalcon\Queue\Beanstalk($config->beanstalk->toArray());
+        $beanstalk = new Phalcon\Queue\Beanstalk(['host'=>$config->beanstalk->host,'port'=>$config->beanstalk->port]);
+        $beanstalk->connect();
+        $beanstalk->choose($config->beanstalk->tube);
+        return $beanstalk;
     });
 }
 $console = new ConsoleApp();

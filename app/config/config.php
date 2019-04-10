@@ -8,6 +8,7 @@ defined('APP_PATH') || define('APP_PATH', BASE_PATH . '/app');
 
 include "constant.php";
 $localConfig = include "config-local.php";
+$routeConfig = include "routes.php";
 
 return new \Phalcon\Config(array_merge([
     'application' => [
@@ -32,4 +33,5 @@ return new \Phalcon\Config(array_merge([
             'path' => APP_PATH . '/runtime/error/{YmdH}.log'
         ]
     ],
+    'route' => $routeConfig
 ],$localConfig));

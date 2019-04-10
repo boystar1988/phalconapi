@@ -1,11 +1,18 @@
 <?php
-ini_set("display_errors",'on');
+//ini_set("display_errors",'on');
 use Phalcon\Di\FactoryDefault;
 
 error_reporting(E_ALL);
 
 define('BASE_PATH', dirname(__DIR__));
 define('APP_PATH', BASE_PATH . '/app');
+
+function shutdown_function()
+{
+    $e = error_get_last();
+    echo json_encode(['code'=>1,'msg'=>$e['message']]);
+}
+register_shutdown_function('shutdown_function');
 
 try {
 
@@ -37,7 +44,8 @@ try {
 
     echo $application->handle()->getContent();
 
+} catch (\Phalcon\Mvc\Dispatcher\Exception $e) {
+    echo json_encode(['code'=>404,'msg'=>'Not Found']);
 } catch (\Exception $e) {
-    echo $e->getMessage() . '<br>';
-    echo '<pre>' . $e->getTraceAsString() . '</pre>';
+    echo json_encode(['code'=>1,'msg'=>$e->getMessage()]);
 }
