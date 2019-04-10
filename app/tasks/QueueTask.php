@@ -4,13 +4,13 @@ class QueueTask extends \Phalcon\CLI\Task{
 
     public function listenAction()
     {
-        echo "[".date("Y-m-d H:i:s")."] "."进入队列 ...".PHP_EOL;
         //监视指定tube
 //        $queue->watch(Beanstalk::DEFAULT_TUBE);
-        echo "[".date("Y-m-d H:i:s")."] "."监听成功 ...".PHP_EOL;
+        echo "[".date("Y-m-d H:i:s")."] "."正在监听 ...".PHP_EOL;
         while(true){
             //Todo: 获取任务
             /** @var \Phalcon\Queue\Beanstalk\Job $job */
+            var_dump($this->queue);exit;
             $job = $this->queue->reserve();
             if(!$job){
                 echo "[".date("Y-m-d H:i:s")."] "."任务不可用，已忽略...".PHP_EOL;

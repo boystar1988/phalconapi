@@ -21,7 +21,7 @@ class UserController extends ControllerBase
      */
     public function updateAction()
     {
-        $data = $this->request->get();
+        $data = $this->request->getPost();
         $res = $this->user->saveUser($data);
         if($res['code'] == SUCCESS_CODE){
             return $this->success();

@@ -5,7 +5,7 @@ class IndexController extends ControllerBase
 
     public function indexAction()
     {
-        return $this->success();
+        return $this->success(['info'=>'高性能API框架']);
     }
 
     /**
