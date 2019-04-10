@@ -16,7 +16,7 @@ class UserService
     public function getUsers($con=[])
     {
         $qb = PhaUser::query();
-        return PageHelper::pageOutput($qb, $con['page_no']??PAGE_NO_DEFAULT, $con['page_size']??PAGE_SIZE_DEFAULT);
+        return PageHelper::pageOutputs($qb, $con['page_no']??PAGE_NO_DEFAULT, $con['page_size']??PAGE_SIZE_DEFAULT);
     }
 
     /**
