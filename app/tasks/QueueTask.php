@@ -10,7 +10,6 @@ class QueueTask extends \Phalcon\CLI\Task{
         while(true){
             //Todo: 获取任务
             /** @var \Phalcon\Queue\Beanstalk\Job $job */
-            var_dump($this->queue);exit;
             $job = $this->queue->reserve();
             if(!$job){
                 echo "[".date("Y-m-d H:i:s")."] "."任务不可用，已忽略...".PHP_EOL;
