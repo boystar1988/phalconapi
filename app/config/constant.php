@@ -2,6 +2,7 @@
 
 //调试模式 打开时抛出详细错误信息，关闭时提示友好信息并记录到日志
 define('APP_DEBUG', false);
+
 //项目名称
 define('PROJECT_NAME', 'phalconapi');
 
@@ -18,6 +19,8 @@ defined('API_SUCCESS_CODE') || define("API_SUCCESS_CODE",200);
 defined('API_FAIL_CODE') || define("API_FAIL_CODE",1);
 
 //提示
+defined('ERR_TIPS') || define('ERR_TIPS','服务器繁忙，请稍后再试～');
+defined('ERR_NOT_FOUND_TIPS') || define('ERR_NOT_FOUND_TIPS','未找到该接口');
 defined('TIPS_SAVE_OK') || define("TIPS_SAVE_OK","保存成功");
 defined('TIPS_SAVE_FAIL') || define("TIPS_SAVE_FAIL","保存失败");
 defined('TIPS_DELETE_OK') || define("TIPS_DELETE_OK","删除成功");

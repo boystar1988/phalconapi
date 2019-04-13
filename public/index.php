@@ -3,8 +3,7 @@
 ini_set('date.timezone','Asia/Shanghai');
 error_reporting(E_ALL);
 
-use Phalcon\Di\FactoryDefault;
-
+//目录常量
 define('BASE_PATH', dirname(__DIR__));
 define('APP_PATH', BASE_PATH . '/app');
 //系统常量
@@ -18,7 +17,7 @@ try {
      * The FactoryDefault Dependency Injector automatically registers
      * the services that provide a full stack framework.
      */
-    $di = new FactoryDefault();
+    $di = new Phalcon\Di\FactoryDefault();
 
     /**
      * Read services
@@ -50,8 +49,13 @@ try {
     echo $content;
 
 } catch (\Phalcon\Mvc\Dispatcher\Exception $e) {
-    echo json_encode(['code'=>404,'msg'=>'Not Found']);
+
+    echo json_encode(['code'=>404,'msg'=>ERR_NOT_FOUND_TIPS]);
+
 } catch (\Exception $e) {
+
     logger($e->getMessage());
-    getContent(APP_DEBUG ? $e->getMessage() : $errTips);
+
+    getContent(APP_DEBUG ? $e->getMessage() : ERR_TIPS);
+
 }

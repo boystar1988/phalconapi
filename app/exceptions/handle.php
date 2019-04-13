@@ -2,9 +2,6 @@
 //200
 header("HTTP/1.0 200 OK");
 
-//错误提示
-$errTips = '服务器繁忙，请稍后再试～';
-
 $uri = explode('?',$_SERVER['REQUEST_URI'])[0]??'';
 
 $requestSn = md5(PROJECT_NAME.$uri);
@@ -19,11 +16,11 @@ function logger($message)
 //异常处理
 function shutdown_function()
 {
-    global $content,$errTips;
+    global $content;
     $e = error_get_last();
     if($e['message'] && !$content){
         logger($e['message']);
-        getContent(APP_DEBUG ? $e['message'] : $errTips);
+        getContent(APP_DEBUG ? $e['message'] : ERR_TIPS);
     }
 }
 register_shutdown_function('shutdown_function');
@@ -36,7 +33,7 @@ function getContent($msg)
     //保护路由，出错自动读取上一次缓存结果
     $protectRoute = require dirname(__DIR__) . "/config/protect-routes.php";
 
-    if(in_array($uri,$protectRoute) && $di->cache->exists($requestSn)){
+    if(in_array($uri,array_keys($protectRoute)) && in_array($di->request->getMethod(),$protectRoute[$uri]) && $di->cache->exists($requestSn)){
         echo $di->cache->get($requestSn);
     }else{
         echo json_encode(['code'=>1,'msg'=>$msg]);
