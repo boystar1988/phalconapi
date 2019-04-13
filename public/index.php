@@ -50,7 +50,7 @@ try {
 
 } catch (\Phalcon\Mvc\Dispatcher\Exception $e) {
 
-    echo json_encode(['code'=>404,'msg'=>ERR_NOT_FOUND_TIPS]);
+    echo json_encode(['code'=>API_NOT_FOUND,'msg'=>ERR_NOT_FOUND_TIPS]);
 
 } catch (\Exception $e) {
 

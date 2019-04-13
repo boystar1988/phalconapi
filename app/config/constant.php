@@ -17,6 +17,7 @@ defined('FAIL_CODE') || define("FAIL_CODE",1);
 //API接口常量
 defined('API_SUCCESS_CODE') || define("API_SUCCESS_CODE",200);
 defined('API_FAIL_CODE') || define("API_FAIL_CODE",1);
+defined('API_NOT_FOUND') || define("API_NOT_FOUND",404);
 
 //提示
 defined('ERR_TIPS') || define('ERR_TIPS','服务器繁忙，请稍后再试～');
