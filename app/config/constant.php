@@ -1,5 +1,10 @@
 <?php
 
+//调试模式 打开时抛出详细错误信息，关闭时提示友好信息并记录到日志
+define('APP_DEBUG', false);
+//项目名称
+define('PROJECT_NAME', 'phalconapi');
+
 //分页
 defined('PAGE_NO_DEFAULT') || define("PAGE_NO_DEFAULT",1);
 defined('PAGE_SIZE_DEFAULT') || define("PAGE_SIZE_DEFAULT",15);

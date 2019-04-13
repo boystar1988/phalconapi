@@ -7,11 +7,9 @@ use Phalcon\Di\FactoryDefault;
 
 define('BASE_PATH', dirname(__DIR__));
 define('APP_PATH', BASE_PATH . '/app');
-//调试模式 打开时抛出详细错误信息，关闭时提示友好信息并记录到日志
-define('APP_DEBUG', false);
-//项目名称
-define('PROJECT_NAME', 'phalconapi');
-
+//系统常量
+include APP_PATH."/config/constant.php";
+//异常处理
 require APP_PATH.'/exceptions/handle.php';
 
 try {
@@ -55,5 +53,5 @@ try {
     echo json_encode(['code'=>404,'msg'=>'Not Found']);
 } catch (\Exception $e) {
     logger($e->getMessage());
-    getContent($di,APP_DEBUG ? $e->getMessage() : $errTips);
+    getContent(APP_DEBUG ? $e->getMessage() : $errTips);
 }
