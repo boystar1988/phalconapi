@@ -5,30 +5,14 @@ error_reporting(E_ALL);
 
 use Phalcon\Di\FactoryDefault;
 
-define('PHALCON_DEBUG', true);
 define('BASE_PATH', dirname(__DIR__));
 define('APP_PATH', BASE_PATH . '/app');
+//调试模式 打开时抛出详细错误信息，关闭时提示友好信息并记录到日志
+define('APP_DEBUG', false);
+//项目名称
+define('PROJECT_NAME', 'phalconapi');
 
-$errorType = PHALCON_DEBUG ? 'debug' : 'error';
-
-$content = '';
-
-function logger($errorType,$message)
-{
-    file_put_contents(APP_PATH."/runtime/$errorType/".date("Ymd").'.log', "[".date('Y-m-d H:i:s')."] [".$_SERVER['REMOTE_ADDR'].'] '.$message.PHP_EOL, FILE_APPEND);
-}
-
-function shutdown_function()
-{
-    global $errorType,$content;
-    $e = error_get_last();
-    if($e['message'] && !$content){
-        echo json_encode(['code'=>1,'msg'=>PHALCON_DEBUG ? $e['message'] : '系统繁忙']);
-        logger($errorType,$e['message']);
-        exit;
-    }
-}
-register_shutdown_function('shutdown_function');
+require APP_PATH.'/exceptions/handle.php';
 
 try {
 
@@ -58,13 +42,18 @@ try {
      */
     $application = new \Phalcon\Mvc\Application($di);
 
+    $application->useImplicitView(false);
+
     $content = $application->handle()->getContent();
+
+    //缓存结果1天
+    $application->di->cache->save($requestSn,$content,86400);
 
     echo $content;
 
 } catch (\Phalcon\Mvc\Dispatcher\Exception $e) {
     echo json_encode(['code'=>404,'msg'=>'Not Found']);
 } catch (\Exception $e) {
-    echo json_encode(['code'=>1,'msg'=>PHALCON_DEBUG ? $e->getMessage() : '系统繁忙']);
-    logger($errorType,$e->getMessage());
+    logger($e->getMessage());
+    getContent($di,APP_DEBUG ? $e->getMessage() : $errTips);
 }

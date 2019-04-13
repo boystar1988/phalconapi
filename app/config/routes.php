@@ -13,4 +13,10 @@ return [
         "action"=>'Index::test',
         "method"=>["GET"],
     ],
+    //测试路由
+    "user-index"=>[
+        "path"=>"/user/index",
+        "action"=>'User::index',
+        "method"=>["GET"],
+    ],
 ];

@@ -28,23 +28,23 @@ $di->setShared('url', function () {
     return $url;
 });
 
-/**
- * Setting up the view component
- */
-$di->setShared('view', function () {
-    $config = $this->getConfig();
-
-    $view = new View();
-    $view->setDI($this);
-    $view->setViewsDir($config->application->viewsDir);
-
-    $view->registerEngines([
-        '.phtml' => PhpEngine::class
-
-    ]);
-
-    return $view;
-});
+///**
+// * Setting up the view component
+// */
+//$di->setShared('view', function () {
+//    $config = $this->getConfig();
+//
+//    $view = new View();
+//    $view->setDI($this);
+//    $view->setViewsDir($config->application->viewsDir);
+//
+//    $view->registerEngines([
+//        '.phtml' => PhpEngine::class
+//
+//    ]);
+//
+//    return $view;
+//});
 
 /**
  * Database connection is created based in the parameters defined in the configuration file
@@ -56,6 +56,25 @@ $di->setShared('db', function () {
     return $connection;
 });
 
+/**
+ * Database connection is created based in the parameters defined in the configuration file
+ */
+$di->setShared('cache', function () {
+    $config = $this->getConfig();
+    $frontend = new Phalcon\Cache\Frontend\Json(["lifetime" => 3600]);
+    $cache = new Phalcon\Cache\Backend\Redis($frontend,$config->cache->toArray());
+    return $cache;
+});
+
+/**
+ * Database connection is created based in the parameters defined in the configuration file
+ */
+$di->setShared('redis', function () {
+    $config = $this->getConfig();
+    $cache = new Phalcon\Cache\Frontend\Json(["lifetime" => 3600]);
+    $redis = new Phalcon\Cache\Backend\Redis($cache,$config->redis->toArray());
+    return $redis;
+});
 
 /**
  * If the configuration specify the use of metadata adapter use it or use memory otherwise
