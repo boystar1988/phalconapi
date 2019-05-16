@@ -1,0 +1,28 @@
+<?php
+//路由Map
+return [
+    //错误路由
+    "error"=>[
+        "path"=>"/error",
+        "action"=>'Index::error',
+        "method"=>["GET"],
+    ],
+    //测试路由
+    "test"=>[
+        "path"=>"/test",
+        "action"=>'Index::test',
+        "method"=>["GET"],
+    ],
+    //测试路由
+    "job"=>[
+        "path"=>"/job",
+        "action"=>'Index::job',
+        "method"=>["GET"],
+    ],
+    //测试路由
+    "user-index"=>[
+        "path"=>"/user/index",
+        "action"=>'User::index',
+        "method"=>["GET"],
+    ],
+];

@@ -1,6 +1,7 @@
 #!/usr/bin/env php
 <?php
 ini_set("display_errors","on");
+ini_set('date.timezone','Asia/Shanghai');
 /*
   +------------------------------------------------------------------------+
   | Phalcon Developer Tools                                                |
@@ -44,8 +45,8 @@ try {
 
     $loader = new Loader();
     $loader
-        ->registerDirs(array(__DIR__ . '/scripts/'))
-        ->registerNamespaces(array('Phalcon' => __DIR__ . '/scripts/'))
+        ->registerDirs([__DIR__ . '/scripts/', dirname(__DIR__) . '/common/models/'])
+        ->registerNamespaces(['Phalcon' => __DIR__ . '/scripts/'])
         ->register();
 
     if (file_exists('.phalcon/autoload.php')) {

@@ -1,3 +1,9 @@
 /.idea/
-/app/config/config-local.php
-/app/runtime/
+/backend/config/config-local.php
+/backend/runtime/
+/backend/cache/
+/frontend/config/config-local.php
+/frontend/runtime/
+/frontend/cache/
+/console/config/config-local.php
+/common/config/config-local.php

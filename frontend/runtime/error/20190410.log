@@ -1,0 +1,14 @@
+[2019-04-10 17:55:38] [127.0.0.1] Uncaught Error: Call to undefined method Phalcon\Http\Request::gets() in /data/project/phalconapi/app/controllers/UserController.php:12
+Stack trace:
+#0 [internal function]: UserController->indexAction()
+#1 [internal function]: Phalcon\Dispatcher->dispatch()
+#2 /data/project/phalconapi/public/index.php(57): Phalcon\Mvc\Application->handle()
+#3 {main}
+  thrown
+[2019-04-10 18:04:16] [127.0.0.1] Uncaught Error: Call to undefined method Phalcon\Http\Request::gets() in /data/project/phalconapi/app/controllers/UserController.php:12
+Stack trace:
+#0 [internal function]: UserController->indexAction()
+#1 [internal function]: Phalcon\Dispatcher->dispatch()
+#2 /data/project/phalconapi/public/index.php(54): Phalcon\Mvc\Application->handle()
+#3 {main}
+  thrown

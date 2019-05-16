@@ -1,0 +1,8 @@
+[2019-04-12 23:26:51] [127.0.0.1] Uncaught Error: Call to undefined method PageHelper::pageOutputs() in /data/project/phalconapi/app/services/UserService.php:19
+Stack trace:
+#0 /data/project/phalconapi/app/controllers/UserController.php(14): UserService->getUsers(Array)
+#1 [internal function]: UserController->indexAction()
+#2 [internal function]: Phalcon\Dispatcher->dispatch()
+#3 /data/project/phalconapi/public/index.php(61): Phalcon\Mvc\Application->handle()
+#4 {main}
+  thrown

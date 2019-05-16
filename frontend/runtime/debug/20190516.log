@@ -1,0 +1,101 @@
+[2019-05-16 19:39:39] [127.0.0.1] Uncaught Error: Class 'Phalcon\Mvc\Applicationsss' not found in /data/project/phalconapi/apps/frontend/public/index.php:40
+Stack trace:
+#0 {main}
+  thrown
+[2019-05-16 19:39:39] [127.0.0.1] Uncaught Error: Class 'Phalcon\Mvc\Applicationsss' not found in /data/project/phalconapi/apps/frontend/public/index.php:40
+Stack trace:
+#0 {main}
+  thrown
+[2019-05-16 19:39:40] [127.0.0.1] Uncaught Error: Class 'Phalcon\Mvc\Applicationsss' not found in /data/project/phalconapi/apps/frontend/public/index.php:40
+Stack trace:
+#0 {main}
+  thrown
+[2019-05-16 19:39:40] [127.0.0.1] Uncaught Error: Class 'Phalcon\Mvc\Applicationsss' not found in /data/project/phalconapi/apps/frontend/public/index.php:40
+Stack trace:
+#0 {main}
+  thrown
+[2019-05-16 21:31:39] [127.0.0.1] Uncaught Error: Class 'PageHelper' not found in /data/project/phalconapi/apps/frontend/services/UserService.php:19
+Stack trace:
+#0 /data/project/phalconapi/apps/frontend/controllers/UserController.php(14): UserService->getUsers(Array)
+#1 [internal function]: UserController->indexAction()
+#2 [internal function]: Phalcon\Dispatcher->dispatch()
+#3 /data/project/phalconapi/apps/frontend/public/index.php(46): Phalcon\Mvc\Application->handle()
+#4 {main}
+  thrown
+[2019-05-16 21:31:40] [127.0.0.1] Uncaught Error: Class 'PageHelper' not found in /data/project/phalconapi/apps/frontend/services/UserService.php:19
+Stack trace:
+#0 /data/project/phalconapi/apps/frontend/controllers/UserController.php(14): UserService->getUsers(Array)
+#1 [internal function]: UserController->indexAction()
+#2 [internal function]: Phalcon\Dispatcher->dispatch()
+#3 /data/project/phalconapi/apps/frontend/public/index.php(46): Phalcon\Mvc\Application->handle()
+#4 {main}
+  thrown
+[2019-05-16 21:31:52] [127.0.0.1] Uncaught Error: Class 'PageHelper' not found in /data/project/phalconapi/apps/frontend/services/UserService.php:19
+Stack trace:
+#0 /data/project/phalconapi/apps/frontend/controllers/UserController.php(14): UserService->getUsers(Array)
+#1 [internal function]: UserController->indexAction()
+#2 [internal function]: Phalcon\Dispatcher->dispatch()
+#3 /data/project/phalconapi/apps/frontend/public/index.php(46): Phalcon\Mvc\Application->handle()
+#4 {main}
+  thrown
+[2019-05-16 21:32:53] [127.0.0.1] Class 'BaseModel' not found
+[2019-05-16 21:32:54] [127.0.0.1] Class 'BaseModel' not found
+[2019-05-16 21:34:19] [127.0.0.1] Class 'App\CommonModels\BaseModel' not found
+[2019-05-16 21:34:19] [127.0.0.1] Class 'App\CommonModels\BaseModel' not found
+[2019-05-16 21:34:19] [127.0.0.1] Class 'App\CommonModels\BaseModel' not found
+[2019-05-16 21:34:20] [127.0.0.1] Class 'App\CommonModels\BaseModel' not found
+[2019-05-16 21:34:28] [127.0.0.1] Class 'App\CommonModels\BaseModel' not found
+[2019-05-16 21:34:59] [127.0.0.1] Class 'App\CommonModels\BaseModel' not found
+[2019-05-16 21:35:22] [127.0.0.1] Class 'Common\Models\BaseModel' not found
+[2019-05-16 21:35:23] [127.0.0.1] Class 'Common\Models\BaseModel' not found
+[2019-05-16 21:42:03] [127.0.0.1] Class 'Common\Models\BaseModel' not found
+[2019-05-16 21:42:04] [127.0.0.1] Class 'Common\Models\BaseModel' not found
+[2019-05-16 21:43:23] [127.0.0.1] Class 'Common\Models\BaseModel' not found
+[2019-05-16 21:43:24] [127.0.0.1] Class 'Common\Models\BaseModel' not found
+[2019-05-16 21:43:25] [127.0.0.1] Class 'Common\Models\BaseModel' not found
+[2019-05-16 21:44:13] [127.0.0.1] Class 'Common\Models\BaseModel' not found
+[2019-05-16 16:49:12] [] swoole exit.
+[2019-05-16 16:49:12] [] swoole exit.
+[2019-05-16 16:49:15] [] swoole exit.
+[2019-05-16 16:49:16] [] swoole exit.
+[2019-05-16 16:49:16] [] swoole exit.
+[2019-05-16 16:49:16] [] swoole exit.
+[2019-05-16 16:49:18] [] swoole exit.
+[2019-05-16 16:49:18] [] swoole exit.
+[2019-05-16 17:00:53] [] swoole exit.
+[2019-05-16 17:00:53] [] swoole exit.
+[2019-05-16 23:44:07] [127.0.0.1] Uncaught Error: Call to undefined method Phalcon\Queue\Beanstalk::pust() in /data/project/phalconapi/frontend/controllers/IndexController.php:22
+Stack trace:
+#0 [internal function]: IndexController->jobAction()
+#1 [internal function]: Phalcon\Dispatcher->dispatch()
+#2 /data/project/phalconapi/frontend/public/index.php(46): Phalcon\Mvc\Application->handle()
+#3 {main}
+  thrown
+[2019-05-16 23:44:21] [127.0.0.1] Uncaught Error: Call to undefined method Phalcon\Queue\Beanstalk::push() in /data/project/phalconapi/frontend/controllers/IndexController.php:22
+Stack trace:
+#0 [internal function]: IndexController->jobAction()
+#1 [internal function]: Phalcon\Dispatcher->dispatch()
+#2 /data/project/phalconapi/frontend/public/index.php(46): Phalcon\Mvc\Application->handle()
+#3 {main}
+  thrown
+[2019-05-16 23:44:22] [127.0.0.1] Uncaught Error: Call to undefined method Phalcon\Queue\Beanstalk::push() in /data/project/phalconapi/frontend/controllers/IndexController.php:22
+Stack trace:
+#0 [internal function]: IndexController->jobAction()
+#1 [internal function]: Phalcon\Dispatcher->dispatch()
+#2 /data/project/phalconapi/frontend/public/index.php(46): Phalcon\Mvc\Application->handle()
+#3 {main}
+  thrown
+[2019-05-16 23:44:22] [127.0.0.1] Uncaught Error: Call to undefined method Phalcon\Queue\Beanstalk::push() in /data/project/phalconapi/frontend/controllers/IndexController.php:22
+Stack trace:
+#0 [internal function]: IndexController->jobAction()
+#1 [internal function]: Phalcon\Dispatcher->dispatch()
+#2 /data/project/phalconapi/frontend/public/index.php(46): Phalcon\Mvc\Application->handle()
+#3 {main}
+  thrown
+[2019-05-16 23:44:23] [127.0.0.1] Uncaught Error: Call to undefined method Phalcon\Queue\Beanstalk::push() in /data/project/phalconapi/frontend/controllers/IndexController.php:22
+Stack trace:
+#0 [internal function]: IndexController->jobAction()
+#1 [internal function]: Phalcon\Dispatcher->dispatch()
+#2 /data/project/phalconapi/frontend/public/index.php(46): Phalcon\Mvc\Application->handle()
+#3 {main}
+  thrown

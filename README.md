@@ -17,9 +17,9 @@
 
 ##### 生成数据表校验配置
 ```
-php app/cli.php db renew
+phcli db/renew
 ```
-执行完毕后，会生成文件：config/dbmap.php
+执行完毕后，会生成文件：common/config/dbmap.php
 
 ##### 生成Model
 ```
