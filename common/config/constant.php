@@ -1,8 +1,5 @@
 <?php
 
-//调试模式 打开时抛出详细错误信息，关闭时提示友好信息并记录到日志
-defined('APP_DEBUG')            || define('APP_DEBUG', false);
-
 //项目名称
 defined('PROJECT_NAME')         || define('PROJECT_NAME', 'phalconapi');
 

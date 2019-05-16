@@ -11,6 +11,7 @@ return [
         'options' => [
             \PDO::ATTR_STRINGIFY_FETCHES => false,
             \PDO::ATTR_EMULATE_PREPARES => false,
+            \PDO::ATTR_PERSISTENT => true, //持久连接
         ]
     ],
     'beanstalk' => [
@@ -19,7 +20,7 @@ return [
         'tube' => 'phalconapi',
     ],
     'cache' => [
-        'cacheDir'=>APP_PATH.'/cache/',
+        'cacheDir' => APP_PATH.'/cache/',
         'host' => '127.0.0.1',
         'port' => 6379,
         'auth' => '',
