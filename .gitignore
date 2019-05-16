@@ -6,4 +6,5 @@
 /frontend/runtime/
 /frontend/cache/
 /console/config/config-local.php
+/console/runtime/
 /common/config/config-local.php

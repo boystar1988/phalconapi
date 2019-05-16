@@ -13,18 +13,16 @@ class QueueTask extends \Phalcon\CLI\Task{
             $job = $this->queue->reserve();
             if($job){
                 $jobId = $job->getId();
-                echo "[".date("Y-m-d H:i:s")."] "."任务".$jobId."执行中...".PHP_EOL;
+                echo "[".date("Y-m-d H:i:s")."] 任务ID(".$jobId.")加入队列".PHP_EOL;
                 $jobInfo = $job->getBody();
                 //Todo: 首字母大写，下划线转驼峰
                 $listenerName = ucwords($jobInfo['listener']).'Listener';
-//                echo "[".date("Y-m-d H:i:s")."] ".'监听器：'.$listenerName.PHP_EOL;
-//                echo "[".date("Y-m-d H:i:s")."] ".'传入任务参数：'.json_encode($jobInfo['data']).PHP_EOL;
                 /** @var ListenerInterface $listener */
                 $listener = new $listenerName();
                 $listener->run($jobInfo['data']);
-                echo "[".date("Y-m-d H:i:s")."] ".'删除完成的任务(ID:'.$jobId.')...'.PHP_EOL;
-//                $job->delete();
-                echo "[".date("Y-m-d H:i:s")."] ".'成功...'.PHP_EOL;
+//                $job->delete();  //删除
+//                $job->release(); //释放
+                $job->bury();    //保留
             }
         }
     }

@@ -19,7 +19,12 @@ class IndexController extends ControllerBase
      */
     public function jobAction()
     {
-        $res = $this->queue->put(['listener' => 'default','data'=>['a'=>1]]);
+        /** @var \Phalcon\Queue\Beanstalk $queue */
+        $queue = $this->queue;
+        $delay = 10;
+        $listenerName = 'default';
+        $param = [];
+        $res = $queue->put(['listener' => $listenerName,'data'=>$param],['delay'=>$delay]);
         return $this->success(intval($res));
     }
 

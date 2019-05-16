@@ -11,7 +11,9 @@ class UserController extends ControllerBase
     {
         $condition['page_no'] = $this->request->get('page_no','int',1);
         $condition['page_size'] = $this->request->get('page_size','int',15);
-        $res = $this->user->getUsers($condition);
+        /** @var UserService $userService */
+        $userService = $this->user;
+        $res = $userService->getUsers($condition);
         return $this->success($res);
     }
 
@@ -22,7 +24,9 @@ class UserController extends ControllerBase
     public function updateAction()
     {
         $data = $this->request->getPost();
-        $res = $this->user->saveUser($data);
+        /** @var UserService $userService */
+        $userService = $this->user;
+        $res = $userService->saveUser($data);
         if($res['code'] == SUCCESS_CODE){
             return $this->success();
         }else{
@@ -37,7 +41,9 @@ class UserController extends ControllerBase
     public function detailAction()
     {
         $uid = $this->request->get('uid','int',0);
-        $res = $this->user->getOne($uid);
+        /** @var UserService $userService */
+        $userService = $this->user;
+        $res = $userService->getOne($uid);
         if($res === false){
             return $this->error(API_FAIL_CODE,"会员不存在");
         }
@@ -51,7 +57,9 @@ class UserController extends ControllerBase
     public function deleteAction()
     {
         $uid = $this->request->getPost('uid');
-        $res = $this->user->deleteUser($uid);
+        /** @var UserService $userService */
+        $userService = $this->user;
+        $res = $userService->deleteUser($uid);
         if($res['code'] == SUCCESS_CODE){
             return $this->success();
         }else{
@@ -65,7 +73,9 @@ class UserController extends ControllerBase
      */
     public function searchAction()
     {
-        $res = $this->user->search();
+        /** @var UserService $userService */
+        $userService = $this->user;
+        $res = $userService->search();
         return $this->success($res);
     }
 
