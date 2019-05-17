@@ -1,8 +1,5 @@
 <?php
 
-//项目名称
-defined('PROJECT_NAME')         || define('PROJECT_NAME', 'phalconapi');
-
 //分页
 defined('PAGE_NO_DEFAULT')      || define("PAGE_NO_DEFAULT",1);
 defined('PAGE_SIZE_DEFAULT')    || define("PAGE_SIZE_DEFAULT",15);
