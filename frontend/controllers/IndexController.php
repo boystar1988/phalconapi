@@ -36,7 +36,7 @@ class IndexController extends ControllerBase
     {
         /** @var WebsocketClient $socket */
         $socket = $this->socket;
-        $conn = $socket->connect('api.osxy.cn',9503);
+        $conn = $socket->connect('127.0.0.1',9501);
         if($conn['code']!=0){
             return $this->error($conn['code'],$conn['msg']);
         }
