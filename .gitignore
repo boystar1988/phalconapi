@@ -1,4 +1,5 @@
 /.idea/
+/.phalcon/
 /backend/config/config-local.php
 /backend/runtime/
 /backend/cache/
