@@ -20,7 +20,7 @@ return new \Phalcon\Config(array_merge([
         'viewsDir'       => APP_PATH . '/views/',
         'pluginsDir'     => APP_PATH . '/plugins/',
         'libraryDir'     => BASE_PATH . '/common/library/',
-        'cacheDir'       => APP_PATH . '/cache/',
+        'cacheDir'       => APP_PATH . '/runtime/cache/',
         'baseUri'        => '/phalconapi/',
         'debug' => [
             'state' => false,
