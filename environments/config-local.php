@@ -2,10 +2,10 @@
 return [
     'database' => [
         'adapter'     => 'Mysql',
-        'host'        => 'localhost',
+        'host'        => '127.0.0.1',
         'username'    => 'root',
         'password'    => 'root',
-        'tablePrefix' => 'pha_',
+        'tablePrefix' => 'phal_',
         'dbname'      => 'phalcon',
         'charset'     => 'utf8',
         'options' => [
