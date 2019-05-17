@@ -20,7 +20,7 @@ function shutdown_function()
     $e = error_get_last();
     if($e['message'] && !$content){
         logger($e['message']);
-        echo getContent(APP_DEBUG ? $e['message'] : ERR_TIPS);exit;
+        getContent(APP_DEBUG ? $e['message'] : ERR_TIPS);exit;
     }
 }
 register_shutdown_function('shutdown_function');
@@ -34,8 +34,8 @@ function getContent($msg)
     $protectRoute = require dirname(__DIR__) . "/config/protect-routes.php";
 
     if(in_array($uri,array_keys($protectRoute)) && in_array($di->request->getMethod(),$protectRoute[$uri]) && $di->cache->exists($requestSn)){
-        return $di->cache->get($requestSn);
+        echo $di->cache->get($requestSn);
     }else{
-        return json_encode(['code'=>1,'msg'=>$msg]);
+        echo json_encode(['code'=>1,'msg'=>$msg]);
     }
 }

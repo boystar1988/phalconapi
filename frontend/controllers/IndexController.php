@@ -28,4 +28,21 @@ class IndexController extends ControllerBase
         return $this->success(intval($res));
     }
 
+    /**
+     * Socket测试
+     * @return \Phalcon\Http\ResponseInterface
+     */
+    public function socketAction()
+    {
+        /** @var WebsocketClient $socket */
+        $socket = $this->socket;
+        $conn = $socket->connect('api.osxy.cn',9503);
+        if($conn['code']!=0){
+            return $this->error($conn['code'],$conn['msg']);
+        }
+        $send = $socket->sendData(['test'=>'data']);
+        $socket->disconnect();
+        return $this->success($send);
+    }
+
 }

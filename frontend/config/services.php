@@ -135,8 +135,10 @@ $di->setShared('queue',function ()use ($di){
     return $beanstalk;
 });
 
-$di->setShared('dbmap',function (){
-    return include APP_PATH . "/config/dbmap.php";
+$di->setShared('socket',function () use($di){
+    $service = new WebsocketClient();
+    $service->di = $di;
+    return $service;
 });
 
 $di->setShared('user',function () use($di){

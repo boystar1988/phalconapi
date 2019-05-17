@@ -56,20 +56,20 @@ class WsTask extends \Phalcon\CLI\Task{
     //连接执行
     public function onConnect(swoole_websocket_server $server,$fd)
     {
-        echo "FD{$fd}建立连接\r\n";
+        echo "[系统] FD{$fd}建立连接\r\n";
 
     }
 
     //断开连接执行
     public function onClose(swoole_websocket_server $server, $fd)
     {
-        echo "FD{$fd}断开连接\r\n";
+        echo "[系统] FD{$fd}断开连接\r\n";
     }
 
     //收到发送信息执行
     public function onMessage(swoole_websocket_server $server, $frame)
     {
-        echo "收到来自FD".$frame->fd.'的数据:'.$frame->data."\r\n";
+        echo "FD".$frame->fd.':'.$frame->data."\r\n";
         $data = json_decode($frame->data,true);
         if(!$this->redis->exists('fd:'.$frame->fd)){
             $this->redis->set('fd:'.$frame->fd,json_encode(['userId'=>$data['userId'],'nickname'=>$data['nickname'],'avatar'=>$data['avatar']]));

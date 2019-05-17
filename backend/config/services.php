@@ -135,6 +135,12 @@ $di->setShared('queue',function ()use ($di){
     return $beanstalk;
 });
 
+$di->setShared('socket',function () use($di){
+    $service = new WebsocketClient();
+    $service->di = $di;
+    return $service;
+});
+
 $di->setShared('user',function () use($di){
     $service = new UserService();
     $service->di = $di;

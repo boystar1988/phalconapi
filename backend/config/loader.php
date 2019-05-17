@@ -10,6 +10,7 @@ $loader->registerDirs(
         $config->application->servicesDir,
         $config->application->modelsDir,
         $config->application->helpersDir,
+        $config->application->libraryDir,
     ]
 )->register();
 
