@@ -2,10 +2,8 @@
 /.phalcon/
 /backend/config/config-local.php
 /backend/runtime/
-/backend/cache/
 /frontend/config/config-local.php
 /frontend/runtime/
-/frontend/cache/
 /console/config/config-local.php
 /console/runtime/
 /common/config/config-local.php

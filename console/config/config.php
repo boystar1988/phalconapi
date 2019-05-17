@@ -23,14 +23,14 @@ return new \Phalcon\Config(array_merge([
         ]
     ],
     'socket'=>[
-        'port' => 9501,
+        'port' => 9505,
         'mode' => SWOOLE_PROCESS,
         'config'=>[
             'reactor_num'=>1,
-            'task_worker_num'=>8,
-            'worker_num'=>8,
-            'ssl_key_file'=>'',
-            'ssl_cert_file'=>'',
+            'task_worker_num'=>2,
+            'worker_num'=>2,
+//            'ssl_key_file'=>'',
+//            'ssl_cert_file'=>'',
         ]
     ],
     'redis'=>[
