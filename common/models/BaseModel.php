@@ -1,4 +1,5 @@
 <?php
+use Phalcon\Mvc\Model\Message as Message;
 
 class BaseModel extends \Phalcon\Mvc\Model
 {
@@ -39,7 +40,7 @@ class BaseModel extends \Phalcon\Mvc\Model
      */
     public function validate($validator)
     {
-        $ruleMap = include dirname(__DIR__) . "/config/dbmap.php";;
+        $ruleMap = include dirname(__DIR__) . "/config/dbmap.php";
         $rule = $ruleMap[$this->getSource()]??[];
         foreach ($rule as $k=>$v){
             if(isset($v['min']) || isset($v['max'])){

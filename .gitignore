@@ -9,4 +9,4 @@
 /console/config/config-local.php
 /console/runtime/
 /common/config/config-local.php
-phcli
+/phcli

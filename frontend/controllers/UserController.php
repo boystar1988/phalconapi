@@ -26,6 +26,9 @@ class UserController extends ControllerBase
         $data = $this->request->getPost();
         /** @var UserService $userService */
         $userService = $this->user;
+        if(!$data){
+            return $this->error(API_FAIL_CODE,"提交的会员信息不能为空");
+        }
         $res = $userService->saveUser($data);
         if($res['code'] == SUCCESS_CODE){
             return $this->success();

@@ -13,6 +13,8 @@ define('APP_PATH', BASE_PATH . '/backend');
 define('APP_DEBUG', true);
 //系统常量
 include BASE_PATH."/common/config/constant.php";
+//项目名称
+define('PROJECT_NAME', 'frontend');
 //异常处理
 require APP_PATH.'/exceptions/handle.php';
 

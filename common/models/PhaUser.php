@@ -200,12 +200,12 @@ class PhaUser extends BaseModel
     public function columnMap()
     {
         return [
-            'uid' => 'uid',
-            'username' => 'username',
-            'password' => 'password',
-            'is_del' => 'is_del',
-            'create_time' => 'create_time',
-            'update_time' => 'update_time'
+            'uid' => '用户ID',
+            'username' => '用户名',
+            'password' => '密码',
+            'is_del' => '是否删除',
+            'create_time' => '创建时间',
+            'update_time' => '更新时间'
         ];
     }
 
